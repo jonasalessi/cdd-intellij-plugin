@@ -18,11 +18,8 @@
 - [ ] Configure the [CODECOV_TOKEN](https://docs.codecov.com/docs/quick-start) secret for automated test coverage reports on PRs
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
-
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
-
-To keep everything working, do not remove `<!-- ... -->` sections. 
+This plugin allows you to execute CDD (Cognitive Design Diff) analyses directly within IntelliJ IDEA.
+It provides actions in the Project View and Editor popup menus to trigger the analyses.
 <!-- Plugin description end -->
 
 ## Installation

@@ -1,15 +1,27 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.jonasalessi.cddintellijplugin</id>
-    <name>cdd-intellij-plugin</name>
-    <vendor>jonasalessi</vendor>
-
+    <!-- Public plugin name should be written in Title Case.
+            Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>CDD Analyses</name>
+    <vendor url="https://github.com/jonasalessi/cdd-intellij-plugin">jonasalessi</vendor>
+    <description>Execute Cognitive Design Diff analyses directly within IntelliJ IDEA. It provides actions in the Project View and Editor popup menus to trigger the analyses.</description>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.jonasalessi.cddintellijplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.jonasalessi.cddintellijplugin.startup.MyProjectActivity" />
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <supportsKotlinPluginMode />
     </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <statusBarWidgetFactory implementation="com.cdd.IcpStatusBarWidgetFactory" />
+    </extensions>
+
+    <actions>
+        <action class="com.cdd.ExecuteAnalyses" text="Execute CDD Analyses" description="Execute CDD Analyses">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
 </idea-plugin>
