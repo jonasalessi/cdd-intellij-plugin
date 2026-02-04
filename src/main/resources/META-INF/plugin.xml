@@ -10,13 +10,13 @@
     </description>
     <depends>com.intellij.modules.platform</depends>
     <extensions defaultExtensionNs="com.intellij">
-        <statusBarWidgetFactory id="icp-status-bar" implementation="com.cdd.IcpStatusBarWidgetFactory"/>
+        <statusBarWidgetFactory id="cdd-status-bar" implementation="com.cdd.ui.statusbar.CDDStatusBarWidgetFactory"/>
         <notificationGroup
-            id="cddIcpAutoCalculateOnSave"
-            displayType="BALLOON"
-            isLogByDefault="true"
+                id="cddAutoCalculateOnSave"
+                displayType="BALLOON"
+                isLogByDefault="true"
         />
-        <fileDocumentManagerListener implementation="com.cdd.IcpAutoCalculateOnSaveListener"/>
+        <fileDocumentManagerListener implementation="com.cdd.listener.IcpAutoCalculateOnSaveListener"/>
     </extensions>
 
 </idea-plugin>

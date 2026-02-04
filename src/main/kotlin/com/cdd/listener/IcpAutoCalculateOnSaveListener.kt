@@ -1,5 +1,6 @@
-package com.cdd
+package com.cdd.listener
 
+import com.cdd.settings.CDDSettingsService
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
@@ -10,7 +11,7 @@ import com.intellij.openapi.project.ProjectLocator
 
 class IcpAutoCalculateOnSaveListener : FileDocumentManagerListener {
     override fun beforeAnyDocumentSaving(document: Document, explicit: Boolean) {
-        if (!IcpSettingsService.getInstance().isAutoCalculateOnSave()) {
+        if (!CDDSettingsService.getInstance().isAutoCalculateOnSave()) {
             return
         }
         val file = FileDocumentManager.getInstance().getFile(document) ?: return
@@ -34,6 +35,6 @@ class IcpAutoCalculateOnSaveListener : FileDocumentManagerListener {
     }
 
     companion object {
-        const val NOTIFICATION_GROUP_ID = "cddIcpAutoCalculateOnSave"
+        const val NOTIFICATION_GROUP_ID = "cddAutoCalculateOnSave"
     }
 }

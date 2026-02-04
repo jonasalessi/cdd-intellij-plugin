@@ -1,5 +1,6 @@
-package com.cdd
+package com.cdd.ui.statusbar
 
+import com.cdd.settings.CDDSettingsService
 import com.intellij.ide.DataManager
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -13,7 +14,7 @@ import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.util.Consumer
 import java.awt.event.MouseEvent
 
-class IcpStatusBarWidget(private val project: Project) : StatusBarWidget, StatusBarWidget.TextPresentation {
+class CDDStatusBarWidget(private val project: Project) : StatusBarWidget, StatusBarWidget.TextPresentation {
     private var statusBar: StatusBar? = null
 
     override fun ID(): String = ID
@@ -28,14 +29,14 @@ class IcpStatusBarWidget(private val project: Project) : StatusBarWidget, Status
 
     override fun getPresentation(): StatusBarWidget.WidgetPresentation = this
 
-    override fun getText(): String = "ICP"
+    override fun getText(): String = "CDD"
 
     override fun getAlignment(): Float = 0f
 
     override fun getTooltipText(): String = if (hasSupportedFileOpen()) {
-        "ICP options"
+        "CDD options"
     } else {
-        "ICP options (open a .java or .kt file to calculate)"
+        "CDD options (open a .java or .kt file to calculate)"
     }
 
     override fun getClickConsumer(): Consumer<MouseEvent> = Consumer { event ->
@@ -74,7 +75,7 @@ class IcpStatusBarWidget(private val project: Project) : StatusBarWidget, Status
         }
 
         override fun isSelected(e: AnActionEvent): Boolean {
-            return IcpSettingsService.getInstance().isAutoCalculateOnSave()
+            return CDDSettingsService.getInstance().isAutoCalculateOnSave()
         }
 
         override fun update(e: AnActionEvent) {
@@ -84,12 +85,12 @@ class IcpStatusBarWidget(private val project: Project) : StatusBarWidget, Status
         }
 
         override fun setSelected(e: AnActionEvent, state: Boolean) {
-            IcpSettingsService.getInstance().setAutoCalculateOnSave(state)
+            CDDSettingsService.getInstance().setAutoCalculateOnSave(state)
             onUpdated()
         }
     }
 
     companion object {
-        const val ID = "cddIcpStatusBarWidget"
+        const val ID = "cddStatusBarWidget"
     }
 }
