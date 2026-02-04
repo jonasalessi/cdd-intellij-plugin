@@ -11,6 +11,12 @@
     <depends>com.intellij.modules.platform</depends>
     <extensions defaultExtensionNs="com.intellij">
         <statusBarWidgetFactory id="icp-status-bar" implementation="com.cdd.IcpStatusBarWidgetFactory"/>
+        <notificationGroup
+            id="cddIcpAutoCalculateOnSave"
+            displayType="BALLOON"
+            isLogByDefault="true"
+        />
+        <fileDocumentManagerListener implementation="com.cdd.IcpAutoCalculateOnSaveListener"/>
     </extensions>
 
 </idea-plugin>
